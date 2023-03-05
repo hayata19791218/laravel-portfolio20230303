@@ -1,0 +1,131 @@
+.index-admin-main {
+  min-height: 100vh;
+  background-color: #F0F0F1;
+}
+.index-admin-main .flash {
+  background-color: rgba(122, 164, 220, 0.7);
+  padding: 10px;
+}
+.index-admin-main .top-bar {
+  background-color: #1D2327;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  padding-left: 20px;
+}
+.index-admin-main .top-bar a {
+  color: #fff;
+  font-size: 14px;
+  text-decoration: none;
+  transition-duration: 0.3s;
+}
+.index-admin-main .top-bar a:hover {
+  transition-duration: 0.3s;
+  color: #7AA4DC;
+}
+.index-admin-main .container {
+  padding: 20px 20px 0 20px;
+}
+.index-admin-main .container:last-child {
+  margin-top: 70px;
+  padding-bottom: 20px;
+}
+@media screen and (min-width: 768px) {
+  .index-admin-main .container:last-child {
+    margin-top: 100px;
+  }
+}
+.index-admin-main .container .post-container {
+  display: flex;
+  align-items: center;
+}
+.index-admin-main .container .post-container .new-post {
+  font-size: 13px;
+  display: inline-block;
+  border: 1px solid #2370B1;
+  color: #2370B1;
+  padding: 4px;
+  border-radius: 2px;
+  font-weight: bold;
+  vertical-align: middle;
+  text-decoration: none;
+  margin-left: 10px;
+  transition-duration: 0.3s;
+}
+.index-admin-main .container .post-container .new-post:hover {
+  color: #000;
+  transition-duration: 0.3s;
+  border-radius: 1px solid #000;
+}
+.index-admin-main .container .post-container h2 {
+  font-size: 20px;
+  font-weight: normal;
+  display: inline;
+}
+.index-admin-main .container .body-container {
+  border: 1px solid #C3C4C7;
+  margin-top: 40px;
+}
+.index-admin-main .container .body-container .category-container {
+  border-bottom: 1px solid #C3C4C7;
+  background-color: #fff;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  padding-left: 10px;
+  font-size: 13px;
+  display: flex;
+}
+.index-admin-main .container .body-container .category-container p:first-child {
+  width: 40%;
+}
+.index-admin-main .container .body-container .category-container p:last-child {
+  width: 60%;
+}
+.index-admin-main .container .body-container .post {
+  display: flex;
+  align-items: center;
+}
+.index-admin-main .container .body-container .post p:first-child {
+  width: 40%;
+  font-weight: bold;
+  padding-right: 10px;
+  line-height: 1.5em;
+}
+.index-admin-main .container .body-container .post p:last-child {
+  width: 60%;
+}
+.index-admin-main .container .body-container .post-edit-delete-container {
+  padding-left: 10px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+.index-admin-main .container .body-container .post-edit-delete-container:nth-of-type(2n+1) {
+  background-color: #fff;
+}
+.index-admin-main .container .body-container .edit-delete {
+  display: flex;
+  margin-top: 15px;
+}
+.index-admin-main .container .body-container .edit-delete a {
+  color: #000;
+  text-decoration: none;
+  transition-duration: 0.3s;
+}
+.index-admin-main .container .body-container .edit-delete a:hover {
+  color: #f01a33;
+  transition-duration: 0.3s;
+}
+.index-admin-main .container .body-container .edit-delete form {
+  margin-left: 10px;
+  cursor: pointer;
+}
+.index-admin-main .container .body-container .edit-delete form:hover {
+  color: #f01a33;
+  transition-duration: 0.3s;
+}
+.index-admin-main .container .body-container .edit-delete button {
+  padding: 0;
+  border: none;
+  background: none;
+  font-size: 16px;
+  line-height: 1em;
+}
