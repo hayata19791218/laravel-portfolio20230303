@@ -22,11 +22,6 @@
   </head>
   <body>
     <main class="create-main">
-      @if(session('message'))
-        <div class="flash">
-            {{session('message')}}
-        </div>
-      @endif
       @if($errors->any())
       <ul class="error">
         @foreach($errors->all() as $error)
@@ -34,6 +29,12 @@
         @endforeach
       </ul>
       @endif
+      @if(session('message'))
+        <div class="flash">
+            {{session('message')}}
+        </div>
+      @endif
+
       <div class="top-bar">
         <a href="{{route('admin.index')}}">サイトへ</a>
       </div>
@@ -43,7 +44,7 @@
         <form action="{{route('admin.productStore')}}" method="post" enctype="multipart/form-data">
           @csrf
           <input class="title" name="title" type="text" placeholder="タイトルを追加" value="{{old('title')}}">
-          <p class="permalink">パーマリンク https://bakkagisaji.com/ <input class="slug" type="text"></p>
+          <p class="permalink">パーマリンク https://bakkagisaji.com/ <input class="slug" type="text" name="url" placeholder="slug"></p>
           <div class="body-container">
             <div class="summernote">
               <textarea name="body" id="summernote" cols="30" rows="10"> {{old('body')}}</textarea>
@@ -88,7 +89,7 @@
       data: form_data,      
       type: "POST",
       contentType: 'multipart/form-data',
-      url: 'imageUpload',        
+      url: 'product-image',        
       cache: false,        
       contentType: false,    
       processData: false,   

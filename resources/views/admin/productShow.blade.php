@@ -13,7 +13,7 @@
     <main class="show-main">
         <div class="top-bar">
             <a href="{{route('admin.index')}}">サイトへ</a>
-            <a href="{{route('admin.productEdit',['id' => $product->id])}}">制作実績の編集</a>
+            <a href="{{route('admin.productEdit',['product' => $product])}}">制作実績の編集</a>
         </div>
         <h1>{{$product->title}}</h1>
         <div class="body">

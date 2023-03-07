@@ -10,6 +10,6 @@ class Work extends Model
     use HasFactory;
 
     public function getRouteKeyName(){
-        return 'title-slug';
+        return 'slug';
     }
 }

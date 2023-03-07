@@ -18,7 +18,7 @@
       <a href="{{route('admin.admin')}}">管理画面</a>
     </div>
     @endauth
-    <!-- <header class="index-header">
+    <header class="index-header">
       <div class="loading" id="loading">
         <div class="wrap">
           <svg id="logo" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 471 471">
@@ -72,7 +72,7 @@
           <p id="percent">0%</p>
         </div>
       </div>
-    </header> -->
+    </header>
     <body class="index-body">
       <div id="topButton" class="top-button">Top</div>
       <div class="first-view">
@@ -100,14 +100,14 @@
           <p class="title-sub">コーディング</p>
           <p class="title-explain">実務で作成したサイトの一部を掲載します。画像の上にマウスを乗せるとタイトルが表示されます。</p>
           <div class="items">
-            <!-- @foreach($works as $work)
-            <a href="{{ route('admin.workShow',['id' => $work->id])}}" class="item">
+            @foreach($works as $work)
+            <a href="{{ route('admin.workShow',['work' => $work])}}" class="item">
               <div class="modal">
                 <p>{{$work->title}}</p>
               </div>
               <img src="{{ asset('storage/images/'.$work->eyecatch) }}" alt="">
             </a>
-            @endforeach -->
+            @endforeach
           </div>
           <div class="conscious">
             <h3>コーディングをする時に意識している事</h3>
@@ -129,16 +129,16 @@
           </div>
           <p class="title-sub">自主制作のページや機能・案件</p>
           <p class="title-explain">Vue.jsで作ったページやLaravelの機能・案件です。画像の上にマウスを乗せるとタイトルが表示されます。</p>
-          <!-- <div class="items">
+          <div class="items">
             @foreach($products as $product)
-              <a href="{{ route('admin.productShow',['id' => $product->id])}}" class="item">
+              <a href="{{ route('admin.productShow',['product' => $product])}}" class="item">
                 <div class="modal">
                   <p>{{$product->title}}</p>
                 </div>
                 <img src="{{ asset('storage/images/'.$product->eyecatch) }}" alt="">
               </a>
             @endforeach
-          </div> -->
+          </div>
         </div>
       </section>
 
@@ -160,7 +160,7 @@
             <canvas id="canvas" class="canvas"></canvas>
             <h2 class="title">Holiday</h2>
           </div>
-          <p class="title-explain">新しい技術を学び取るのが好きで仕事前・仕事後・休みの日は大体勉強しています。<br>現在はJavaScript・Vue.js・Laravelの勉強をしています。<br>このサイトはLaravel・JavaScriptで作りました。</p>
+          <p class="title-explain">新しい技術を学ぶのが好きで仕事前・仕事後・休みの日は大体勉強しています。<br>現在はJavaScript・Vue.js・Laravelの勉強をしています。<br>このサイトはLaravel・JavaScriptで作りました。</p>
         </div>
       </section>
 

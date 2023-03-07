@@ -9,6 +9,10 @@
   color: red;
   list-style: none;
 }
+.create-main .flash {
+  background-color: rgba(122, 164, 220, 0.7);
+  padding: 10px;
+}
 .create-main .top-bar {
   background-color: #1D2327;
   padding-top: 5px;

@@ -29,17 +29,22 @@
         @endforeach
       </ul>
       @endif
+      @if(session('message'))
+        <div class="flash">
+            {{session('message')}}
+        </div>
+      @endif
       <div class="top-bar">
         <a href="{{route('admin.index')}}">サイトへ</a>
       </div>
       <div class="create-container">
         <a href="{{route('admin.admin')}}" class="admin-link"><button>管理画面へ戻る</button></a>
         <h2>制作実績の編集</h2>
-        <form action="{{route('admin.workUpdate',['id' => $work->id])}}" method="post" enctype="multipart/form-data">
+        <form action="{{route('admin.workUpdate',['work' => $work])}}" method="post" enctype="multipart/form-data">
           @csrf
           @method('put')
           <input class="title" name="title" type="text" placeholder="タイトルを追加" value="{{old('title',$work->title)}}">
-          <p class="permalink">パーマリンク https://bakkagisaji.com/ <input class="slug" type="text"></p>
+          <p class="permalink">パーマリンク https://bakkagisaji.com/ <input class="slug" type="text" name="url" placeholder="slugを入力" value="{{old('slug',$work->slug)}}"></p>
           <div class="body-container">
             <div class="summernote">
               <textarea name="body" id="summernote" cols="30" rows="10">{{old('body',$work->body)}}</textarea>
@@ -48,7 +53,7 @@
             <div class="eyecatch">
               <h3>アイキャッチ画像</h3>
               <div class="eyecatch-wrap">
-                <input type="file" name="eyecatch" accept="image/jpg,image/png" value="{{old('eyecatch',$work->eyecatch)}}">
+                <input type="file" name="eyecatch" accept="image/jpg,image/png" value="{{old($work->eyecatch)}}">
                 <p>アイキャッチ画像を変更</p>
                 @if($work->eyecatch)
                 <img src="{{asset('storage/images/'.$work->eyecatch)}}" alt="">

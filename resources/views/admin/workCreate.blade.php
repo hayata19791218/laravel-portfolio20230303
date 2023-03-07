@@ -43,7 +43,7 @@
         <form action="{{route('admin.workStore')}}" method="post" enctype="multipart/form-data">
           @csrf
           <input class="title" name="title" type="text" placeholder="タイトルを追加" value="{{old('title')}}">
-          <p class="permalink">パーマリンク https://bakkagisaji.com/ <input class="slug" type="text" name="title_slug" placeholder="slugを入力"></p>
+          <p class="permalink">パーマリンク https://bakkagisaji.com/ <input class="slug" type="text" name="url" placeholder="slugを入力" value="{{old('url')}}"></p>
           <div class="body-container">
             <div class="summernote">
               <textarea name="body" id="summernote" cols="30" rows="10"> {{old('body')}}</textarea>
@@ -88,7 +88,7 @@
       data: form_data,      
       type: "POST",
       contentType: 'multipart/form-data',
-      url: 'imageUpload',        
+      url: 'image',           //ルーティングと同じにする
       cache: false,        
       contentType: false,    
       processData: false,   

@@ -21,23 +21,22 @@ class AdminController extends Controller
     public function workStore(Request $request){
         $inputs = $request->validate([
             'title' => 'required',
-            'title-slug' => 'required',
-            'url-slug' => 'required',
+            'url' => 'required',
             'body' => 'required',
             'eyecatch' => 'required|max:1024',
         ]);
 
         $work = new Work();
         $work->title = $inputs['title'];
-        // $work->title-slug = $inputs['title-slug'];
-        // $work->url-slug = $inputs['url-slug'];
+        $work->url = $inputs['url'];
+        $work->slug = $work->url;
         $work->body = $inputs['body'];
         $original = $request->file('eyecatch')->getClientOriginalName();
         $name = date('Ymd_His').'_'.$original;
         $request->file('eyecatch')->move('storage/images',$name);
         $work->eyecatch = $name;
         $work->save();
-        return back()->with('message','制作物の投稿が完了しました');
+        return back()->with('message','制作実績の投稿が完了しました');
     }
 
     public function uploadImage(Request $request){
@@ -45,8 +44,8 @@ class AdminController extends Controller
         if($result){
             $original = request()->file('image')->getClientOriginalName();
             $name = $original.'_'.date('Ymd_His');
-            request()->file('image')->move('temp',$name);
-            echo '/temp/'.$name;
+            request()->file('image')->move('workImage',$name);
+            echo '/workImage/'.$name;
         }
     }
 
@@ -61,25 +60,25 @@ class AdminController extends Controller
         return view('admin.index',compact('works','products'));
     }
 
-    public function workShow($id){
-        $work = Work::find($id);
+    public function workShow(Work $work){
         return view('admin.workShow',compact('work'));
     }
 
-    public function workEdit($id){
-        $work = Work::find($id);
+    public function workEdit(Work $work){
         return view('admin.workEdit',compact('work'));
     }
 
-    public function workUpdate(Request $request,$id){
+    public function workUpdate(Request $request,Work $work){
         $inputs = $request->validate([
             'title' => 'required',
+            'url' => 'required',
             'body' => 'required',
         ]);
 
-        $work = Work::find($id);
-        $work->title = $request->title;
-        $work->body = $request->body;
+        $work->title = $inputs['title'];
+        $work->url = $inputs['url'];
+        $work->slug = $work->url;
+        $work->body = $inputs['body'];
         if($request->eyecatch){
             $original = $request->file('eyecatch')->getClientOriginalName();
             $name = date('Ymd_His').'_'.$original;
@@ -87,72 +86,75 @@ class AdminController extends Controller
             $work->eyecatch = $name;
         }
         $work->save();
-        return back()->with('message','制作物の更新が完了しました');
+        return back()->with('message','制作実績の更新が完了しました');
     }
 
-    // public function productImage(){
-    //     $result = $request->file('image')->isValid();
-    //     if($result){
-    //         $original = request()->file('image')->getClientOriginalName();
-    //         $name = $original.'_'.date('Ymd_His');
-    //         request()->file('image')->move('productImage',$name);
-    //         echo '/productImage/'.$name;
-    //     }
-    // }
+
+
+    //記事をかく（「Request $request」について）
+    public function productImage(Request $request){
+        $result = $request->file('image')->isValid();
+        if($result){
+            $original = request()->file('image')->getClientOriginalName();
+            $name = $original.'_'.date('Ymd_His');
+            request()->file('image')->move('productImage',$name);
+            echo '/productImage/'.$name;
+        }
+    }
     
-    // public function productCreate(){
-    //     return view('admin.productCreate');
-    // }
+    public function productCreate(){
+        return view('admin.productCreate');
+    }
     
-    // public function productStore(Request $request){
-    //     $inputs = $request->validate([
-    //         'title' => 'required',
-    //         'body' => 'required',
-    //         'eyecatch' => 'required|max:1024'
-    //     ]);
+    public function productStore(Request $request){
+        $inputs = $request->validate([
+            'title' => 'required',
+            'url' => 'required',
+            'body' => 'required',
+            'eyecatch' => 'required|max:1024',
+        ]);
+        $product = new Product();
+        $product->title = $inputs['title'];
+        $product->url = $inputs['url'];
+        $product->slug = $product->url;
+        $product->body = $inputs['body'];
+        $original = $request->file('eyecatch')->getClientOriginalName();
+        $name = date('Ymd_His').'_'.$original;
+        $request->file('eyecatch')->move('storage/images',$name);
+        $product->eyecatch = $name;
+        $product->save();
+        return back()->with('message','自主制作の投稿が完了しました');
+    }
 
-    //     $product = new Product();
-    //     $product->title = $inputs['title'];
-    //     $product->body = $inputs['body'];
-    //     $original = $request->file('eyecatch')->getClientOriginalName();
-    //     $name = date('Ymd_His').'_'.$original;
-    //     $request->file('eyecatch')->move('storage/images',$name);
-    //     $product->eyecatch = $name;
-    //     $product->save();
-    //     return back()->with('message','自主制作の投稿が完了しました');
-    // }
+    public function productDelete($id){
+        product::destroy($id);
+        return back();
+    }
 
-    // public function productDelete($id){
-    //     product::destroy($id);
-    //     return back();
-    // }
+    public function productShow(Product $product){
+        return view('admin.productShow',compact('product'));
+    }
 
-    // public function productShow($id){
-    //     $product = Product::find($id);
-    //     return view('admin.productShow',compact('product'));
-    // }
+    public function productEdit(Product $product){
+        return view('admin.productEdit',compact('product'));
+    }
 
-    // public function productEdit($id){
-    //     $product = Product::find($id);
-    //     return view('admin.productEdit',compact('product'));
-    // }
+    public function productUpdate(Request $request,$id){
+        $inputs = $request->validate([
+            'title' => 'required',
+            'body' => 'required',
+        ]);
 
-    // public function productUpdate(Request $request,$id){
-    //     $inputs = $request->validate([
-    //         'title' => 'required',
-    //         'body' => 'required',
-    //     ]);
-
-    //     $product = Product::find($id);
-    //     $product->title = $request->title;
-    //     $product->body = $request->body;
-    //     if($request->eyecatch){
-    //         $original = $request->file('eyecatch')->getClientOriginalName();
-    //         $name = date('Ymd_His').'_'.$original;
-    //         $request->file('eyecatch')->move('storage/images',$name);
-    //         $product->eyecatch = $name;
-    //     }
-    //     $product->save();
-    //     return back()->with('message','制作物の更新が完了しました');
-    // }
+        $product = Product::find($id);
+        $product->title = $request->title;
+        $product->body = $request->body;
+        if($request->eyecatch){
+            $original = $request->file('eyecatch')->getClientOriginalName();
+            $name = date('Ymd_His').'_'.$original;
+            $request->file('eyecatch')->move('storage/images',$name);
+            $product->eyecatch = $name;
+        }
+        $product->save();
+        return back()->with('message','自主制作の更新が完了しました');
+    }
 }

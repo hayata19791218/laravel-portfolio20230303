@@ -34,7 +34,7 @@
                     <p>{{$work->created_at}}</p>
                     </div>
                     <div class="edit-delete">
-                    <a href="{{route('admin.workEdit',['id' => $work->id])}}">編集</a>
+                    <a href="{{route('admin.workEdit',['work' => $work])}}">編集</a>
                     <form method="post" action="{{route('admin.workDelete',['id' => $work->id])}} id="deleteButton"">
                         @csrf
                         @method('DELETE')
@@ -47,7 +47,7 @@
         </div>
         <div class="container">
             <div class="post-container">
-            <h2>自主制作・自分で作った機能の投稿</h2>
+            <h2>Laravel・Vueで作った機能の投稿</h2>
             <a href="{{route('admin.productCreate')}}" class="new-post">新規追加</a>
             </div>
             <div class="body-container">
@@ -56,21 +56,21 @@
                 <p>日付</p>
             </div>
             @foreach($products as $product)
-                <div class="post-edit-delete-container">
-                    <div class="post">
-                    <p>{{$product->title}}</p>
-                    <p>{{$product->created_at}}</p>
-                    </div>
-                    <div class="edit-delete">
-                    <a href="{{route('admin.productEdit',['id' => $product->id])}}">編集</a>
-                    <form method="post" action="{{route('admin.productDelete',['id' => $product->id])}} id="deleteButton"">
-                        @csrf
-                        @method('DELETE')
-                        <button onClick="return confirm('本当に削除しますか？');">削除</button>
-                    </form>
-                    </div>
+            <div class="post-edit-delete-container">
+                <div class="post">
+                <p>{{$product->title}}</p>
+                <p>{{$product->created_at}}</p>
                 </div>
-                @endforeach
+                <div class="edit-delete">
+                <a href="{{route('admin.productEdit',['product' => $product])}}">編集</a>
+                <form method="post" action="{{route('admin.productDelete',['id' => $product->id])}} id="deleteButton"">
+                    @csrf
+                    @method('DELETE')
+                    <button onClick="return confirm('本当に削除しますか？');">削除</button>
+                </form>
+                </div>
+            </div>
+            @endforeach
         </div>
     </main>
   </body>

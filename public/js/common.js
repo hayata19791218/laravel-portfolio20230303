@@ -1,31 +1,31 @@
-// //ローディング
-// const percent = document.getElementById('percent');
-// const loading = document.getElementById('loading');
+//ローディング
+const percent = document.getElementById('percent');
+const loading = document.getElementById('loading');
 
-// window.addEventListener('load',() =>{
-//     const loadingOpacity = () =>{
-//         loading.classList.add('opacity');
-//     }
-//     setTimeout(loadingOpacity,2800);
-// });
+window.addEventListener('load',() =>{
+    const loadingOpacity = () =>{
+        loading.classList.add('opacity');
+    }
+    setTimeout(loadingOpacity,2800);
+});
 
-// let counter = 0;
-// const timer = setInterval(function(){
-//     percent.innerHTML = `${counter}%`;
-//     counter ++;
-//     if(counter > 100) clearInterval(timer);
-// },20);
+let counter = 0;
+const timer = setInterval(function(){
+    percent.innerHTML = `${counter}%`;
+    counter ++;
+    if(counter > 100) clearInterval(timer);
+},20);
 
-// //svgのアニメーション
-// new Vivus('logo', 
-//     {   duration: 100,
-//         start: 'autostart',
-//         pathTimingFunction: Vivus.EASE_OUT
-//     }, 
-//     function(obj){
-//         obj.el.classList.add('fill');
-//     }
-// );
+//svgのアニメーション
+new Vivus('logo', 
+    {   duration: 100,
+        start: 'autostart',
+        pathTimingFunction: Vivus.EASE_OUT
+    }, 
+    function(obj){
+        obj.el.classList.add('fill');
+    }
+);
 
 //円がフェードイン
 let circleFadeIn = document.querySelectorAll('.title-circle');
@@ -45,21 +45,21 @@ for(let i = 0;i < circleFadeIn.length;i ++){
 }
 
 // トップに戻るボタン
-// const topButton = document.getElementById('topButton');
-// window.addEventListener('scroll',() => {
-//     const scroll = window.pageYOffset;
-//     if(scroll > 200){
-//         topButton.classList.add('button-fade');
-//     }else{
-//         topButton.classList.remove('button-fade');
-//     }
-// });
-// topButton.addEventListener('click',() => {
-//     window.scroll({
-//         top:0,
-//         behavior:'smooth'
-//     });
-// });
+const topButton = document.getElementById('topButton');
+window.addEventListener('scroll',() => {
+    const scroll = window.pageYOffset;
+    if(scroll > 200){
+        topButton.classList.add('button-fade');
+    }else{
+        topButton.classList.remove('button-fade');
+    }
+});
+topButton.addEventListener('click',() => {
+    window.scroll({
+        top:0,
+        behavior:'smooth'
+    });
+});
 
 // フェードイン
 let itemFadeIn = document.querySelectorAll('.item');

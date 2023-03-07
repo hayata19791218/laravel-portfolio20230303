@@ -29,6 +29,11 @@
         @endforeach
       </ul>
       @endif
+      @if(session('message'))
+        <div class="flash">
+            {{session('message')}}
+        </div>
+      @endif
       <div class="top-bar">
         <a href="{{route('admin.index')}}">サイトへ</a>
       </div>
@@ -39,7 +44,7 @@
           @csrf
           @method('put')
           <input class="title" name="title" type="text" placeholder="タイトルを追加" value="{{old('title',$product->title)}}">
-          <p class="permalink">パーマリンク https://bakkagisaji.com/ <input class="slug" type="text"></p>
+          <p class="permalink">パーマリンク https://bakkagisaji.com/ <input class="slug" type="text" name="url" placeholder="slugを入力" value="{{old('slug',$product->slug)}}"></p>
           <div class="body-container">
             <div class="summernote">
               <textarea name="body" id="summernote" cols="30" rows="10">{{old('body',$product->body)}}</textarea>
