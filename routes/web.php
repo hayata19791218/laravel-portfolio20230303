@@ -32,8 +32,11 @@ Route::get('/workCreate','AdminController@workCreate')->name('admin.workCreate')
 //Workの保存
 Route::post('/workStore','AdminController@workStore')->name('admin.workStore');
 
-//summernoteでの画像の保存
+//workのsummernoteでの画像の保存
 Route::post('/image','AdminController@uploadImage')->name('admin.image');
+
+//workのsummernoteでの画像の保存
+Route::post('/work-image-edit','AdminController@workImageEdit')->name('admin.work-image-edit');
 
 //Workの編集
 Route::get('/workEdit/{work}','AdminController@workEdit')->name('admin.workEdit');
@@ -56,8 +59,11 @@ Route::get('/productCreate','AdminController@productCreate')->name('admin.produc
 //my productの保存
 Route::post('/productStore','AdminController@productStore')->name('admin.productStore');
 
-//my productの画像保存
+//my productのsummernoteでの画像保存
 Route::post('/product-image','AdminController@productImage')->name('admin.product-image');
+
+//my productの編集時の画像追加
+Route::post('/product-image-edit','AdminController@productImageEdit')->name('admin.product-image-edit');
 
 //productの編集
 Route::get('/productEdit/{product}','AdminController@productEdit')->name('admin.productEdit');
@@ -69,4 +75,4 @@ Route::get('/productShow/{product}','AdminController@productShow')->name('admin.
 Route::delete('/productDelete/{id}','AdminController@productDelete')->name('admin.productDelete');
 
 //productの更新
-Route::put('/productUpdate/{id}','AdminController@productUpdate')->name('admin.productUpdate');
+Route::put('/productUpdate/{product}','AdminController@productUpdate')->name('admin.productUpdate');

@@ -3,11 +3,12 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-        <link href="{{ asset('css/index.css') }}" rel="stylesheet" type="text/css">
-        <link href="{{ asset('css/reset.css') }}" rel="stylesheet" type="text/css">
+        <meta name="robots" content="noindex">
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP&family=Shippori+Mincho&display=swap" rel="stylesheet">
+        <link href="{{ asset('css/index.css') }}" rel="stylesheet" type="text/css">
+        <link href="{{ asset('css/reset.css') }}" rel="stylesheet" type="text/css">
         <script src="https://unpkg.com/three@0.140.2/build/three.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r127/three.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/vivus/0.3.2/vivus.js"></script>
@@ -18,7 +19,7 @@
       <a href="{{route('admin.admin')}}">管理画面</a>
     </div>
     @endauth
-    <header class="index-header">
+    <!-- <header class="index-header">
       <div class="loading" id="loading">
         <div class="wrap">
           <svg id="logo" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 471 471">
@@ -72,7 +73,7 @@
           <p id="percent">0%</p>
         </div>
       </div>
-    </header>
+    </header> -->
     <body class="index-body">
       <div id="topButton" class="top-button">Top</div>
       <div class="first-view">

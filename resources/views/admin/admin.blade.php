@@ -1,8 +1,13 @@
+@guest
+ログインしてください
+@endguest
+@auth
 <!doctype html>
 <html lang="ja">
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="robots" content="noindex">
     <link href="{{ asset('css/reset.css') }}" rel="stylesheet" type="text/css">
     <link href="{{ asset('css/admin.css') }}" rel="stylesheet" type="text/css">
     <title>管理画面</title>
@@ -75,3 +80,4 @@
     </main>
   </body>
 </html>
+@endauth

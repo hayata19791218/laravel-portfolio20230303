@@ -49,6 +49,16 @@ class AdminController extends Controller
         }
     }
 
+    public function workImageEdit(Request $request){
+        $result = $request->file('image')->isValid();
+        if($result){
+            $original = request()->file('image')->getClientOriginalName();
+            $name = $original.'_'.date('Ymd_His');
+            request()->file('image')->move('workImage',$name);
+            echo '/workImage/'.$name;
+        }
+    }
+
     public function workDelete($id){
         Work::destroy($id);
         return back();
@@ -89,10 +99,16 @@ class AdminController extends Controller
         return back()->with('message','制作実績の更新が完了しました');
     }
 
-
-
-    //記事をかく（「Request $request」について）
     public function productImage(Request $request){
+        $result = $request->file('image')->isValid();
+        if($result){
+            $original = request()->file('image')->getClientOriginalName();
+            $name = $original.'_'.date('Ymd_His');
+            request()->file('image')->move('productImage',$name);
+            echo '/productImage/'.$name;
+        }
+    }
+    public function productImageEdit(Request $request){
         $result = $request->file('image')->isValid();
         if($result){
             $original = request()->file('image')->getClientOriginalName();
@@ -139,13 +155,12 @@ class AdminController extends Controller
         return view('admin.productEdit',compact('product'));
     }
 
-    public function productUpdate(Request $request,$id){
+    public function productUpdate(Request $request,Product $product){
         $inputs = $request->validate([
             'title' => 'required',
             'body' => 'required',
         ]);
 
-        $product = Product::find($id);
         $product->title = $request->title;
         $product->body = $request->body;
         if($request->eyecatch){

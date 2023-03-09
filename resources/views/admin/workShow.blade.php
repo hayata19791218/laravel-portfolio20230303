@@ -3,10 +3,12 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
+    <meta name="robots" content="noindex">
     <link href="{{ asset('css/reset.css') }}" rel="stylesheet" type="text/css">
     <link href="{{ asset('css/workShow.css') }}" rel="stylesheet" type="text/css">
-
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP&family=Shippori+Mincho&display=swap" rel="stylesheet">
     <title>制作実績</title>
   </head>
   <body>
