@@ -19,7 +19,7 @@
       <a href="{{route('admin.admin')}}">管理画面</a>
     </div>
     @endauth
-    <!-- <header class="index-header">
+    <header class="index-header">
       <div class="loading" id="loading">
         <div class="wrap">
           <svg id="logo" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 471 471">
@@ -73,7 +73,7 @@
           <p id="percent">0%</p>
         </div>
       </div>
-    </header> -->
+    </header>
     <body class="index-body">
       <div id="topButton" class="top-button">Top</div>
       <div class="first-view">
